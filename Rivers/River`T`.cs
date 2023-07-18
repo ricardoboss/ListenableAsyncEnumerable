@@ -1,4 +1,4 @@
-namespace Rivers;
+namespace System.Collections.Generic;
 
 /// <summary>
 /// Extending <see cref="IAsyncEnumerable{T}"/>, a <see cref="River{T}"/> adds the ability to add

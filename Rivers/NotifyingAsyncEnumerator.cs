@@ -1,4 +1,4 @@
-namespace Rivers;
+namespace System.Collections.Generic;
 
 public class NotifyingAsyncEnumerator<T> : IAsyncEnumerator<T>
 {

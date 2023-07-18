@@ -1,4 +1,4 @@
-namespace Rivers;
+namespace System.Collections.Generic;
 
 public interface IRiver<T> : IAsyncEnumerable<T>
 {
