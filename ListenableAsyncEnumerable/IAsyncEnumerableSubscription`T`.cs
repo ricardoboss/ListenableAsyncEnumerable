@@ -1,6 +1,6 @@
 namespace System.Collections.Generic;
 
-public interface IRiverSubscription<T> : IDisposable
+public interface IAsyncEnumerableSubscription<T> : IDisposable
 {
     public Action<T> OnData { get; set; }
 
@@ -9,7 +9,7 @@ public interface IRiverSubscription<T> : IDisposable
     public Action OnDone { get; set; }
 
     /// <summary>
-    /// Cancels this subscription and detaches the listeners from the subscribed <see cref="IRiver{T}"/>. Does not
+    /// Cancels this subscription and detaches the listeners from the subscribed <see cref="IListenableAsyncEnumerable{T}"/>. Does not
     /// invoke the <see cref="OnDone"/> callback.
     /// </summary>
     void Cancel();
@@ -35,7 +35,7 @@ public interface IRiverSubscription<T> : IDisposable
     /// Returns a task that handles the <see cref="OnDone"/> and <see cref="OnError"/> callbacks.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token passed to the returned task.</param>
-    /// <returns>A task that completes when the <see cref="River{T}"/> does or throws then the <see cref="OnError"/>
+    /// <returns>A task that completes when the <see cref="ListenableAsyncEnumerable{T}"/> does or throws then the <see cref="OnError"/>
     /// callback gets invoked.</returns>
     public Task AsTask(CancellationToken cancellationToken = default);
 }

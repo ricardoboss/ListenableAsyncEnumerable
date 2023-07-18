@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rivers", "Rivers\Rivers.csproj", "{E19504DC-8603-46E0-B510-3E67CFB4B59D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListenableAsyncEnumerable", "ListenableAsyncEnumerable\ListenableAsyncEnumerable.csproj", "{E19504DC-8603-46E0-B510-3E67CFB4B59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rivers.Test", "Rivers.Test\Rivers.Test.csproj", "{9A658A60-0878-4F00-BAAD-5C1A5C4C39A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListenableAsyncEnumerable.Test", "ListenableAsyncEnumerable.Test\ListenableAsyncEnumerable.Test.csproj", "{9A658A60-0878-4F00-BAAD-5C1A5C4C39A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3951A308-6789-4162-B1FF-12238676C409}"
 	ProjectSection(SolutionItems) = preProject

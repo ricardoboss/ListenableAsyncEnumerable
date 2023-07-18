@@ -1,11 +1,11 @@
 namespace System.Collections.Generic;
 
-public class RiverSubscription<T> : IRiverSubscription<T>
+public class AsyncEnumerableSubscription<T> : IAsyncEnumerableSubscription<T>
 {
-    private readonly River<T> source;
+    private readonly ListenableAsyncEnumerable<T> source;
     private readonly bool cancelOnError;
 
-    public RiverSubscription(River<T> source, Action<T> onData, Action<Exception> onError, Action onDone, bool cancelOnError)
+    public AsyncEnumerableSubscription(ListenableAsyncEnumerable<T> source, Action<T> onData, Action<Exception> onError, Action onDone, bool cancelOnError)
     {
         this.source = source;
         this.cancelOnError = cancelOnError;

@@ -2,13 +2,13 @@ using System.Text;
 
 namespace Rivers.Test;
 
-public class RiverPubSubTest
+public class ListenableAsyncEnumerableTest
 {
     [Test]
     public async Task TestSimpleListen()
     {
         var input = GenerateAsyncEnumerable();
-        var river = input.ToRiver();
+        var river = input.ToListenable();
 
         var builder = new StringBuilder();
 
@@ -22,9 +22,9 @@ public class RiverPubSubTest
     }
 
     [Test]
-    public async Task TestRiverIsAsyncEnumerable()
+    public async Task TestIsAsyncEnumerable()
     {
-        var input = GenerateAsyncEnumerable().ToRiver();
+        var input = GenerateAsyncEnumerable().ToListenable();
 
         await foreach (var value in input)
         {
@@ -36,7 +36,7 @@ public class RiverPubSubTest
     public async Task TestAsTask()
     {
         var input = GenerateAsyncEnumerable();
-        var river = input.ToRiver();
+        var river = input.ToListenable();
         using var subscription = river.Listen();
         var task = subscription.AsTask();
 
@@ -50,7 +50,7 @@ public class RiverPubSubTest
     public async Task TestAsTaskFallback()
     {
         var input = GenerateAsyncEnumerable("");
-        var river = input.ToRiver();
+        var river = input.ToListenable();
         using var subscription = river.Listen();
         var task = subscription.AsTask('0');
 
@@ -64,11 +64,11 @@ public class RiverPubSubTest
     }
 
     [Test]
-    public void TestToRiverReturnsSameInstance()
+    public void TestToListenableReturnsSameInstance()
     {
         var input = GenerateAsyncEnumerable();
-        var a = input.ToRiver();
-        var b = a.ToRiver();
+        var a = input.ToListenable();
+        var b = a.ToListenable();
 
         Assert.That(b, Is.SameAs(a));
     }
@@ -76,7 +76,7 @@ public class RiverPubSubTest
     [Test]
     public void TestExceptionGetsHandled()
     {
-        var input = GenerateAsyncEnumerable(shouldThrow: true).ToRiver();
+        var input = GenerateAsyncEnumerable(shouldThrow: true).ToListenable();
         Exception? ex = null;
         input.Listen(onError: e => ex = e);
 
@@ -88,7 +88,7 @@ public class RiverPubSubTest
     [Test]
     public void TestDefaultExceptionHandler()
     {
-        var input = GenerateAsyncEnumerable(shouldThrow: true).ToRiver();
+        var input = GenerateAsyncEnumerable(shouldThrow: true).ToListenable();
         input.Listen();
 
         Assert.ThrowsAsync<Exception>(async () => await input.ToListAsync());
@@ -97,7 +97,7 @@ public class RiverPubSubTest
     [Test]
     public async Task TestAsTaskCancellation()
     {
-        var input = GenerateAsyncEnumerable().ToRiver();
+        var input = GenerateAsyncEnumerable().ToListenable();
 
         var output = "";
         var subscription = input.Listen(v => output += v);
@@ -114,7 +114,7 @@ public class RiverPubSubTest
     [Test]
     public async Task TestAsTaskWithValueCancellation()
     {
-        var input = GenerateAsyncEnumerable().ToRiver();
+        var input = GenerateAsyncEnumerable().ToListenable();
 
         var output = "";
         var subscription = input.Listen(v => output += v);
@@ -131,7 +131,7 @@ public class RiverPubSubTest
     [Test]
     public async Task TastTaskThrows()
     {
-        var input = GenerateAsyncEnumerable(shouldThrow: true).ToRiver();
+        var input = GenerateAsyncEnumerable(shouldThrow: true).ToListenable();
 
         var subscription = input.Listen();
         var noValueTask = subscription.AsTask();
@@ -143,7 +143,7 @@ public class RiverPubSubTest
     [Test]
     public async Task TastTaskWithValueThrows()
     {
-        var input = GenerateAsyncEnumerable(shouldThrow: true).ToRiver();
+        var input = GenerateAsyncEnumerable(shouldThrow: true).ToListenable();
 
         var subscription = input.Listen();
         var valueTask = subscription.AsTask(true);
@@ -159,7 +159,7 @@ public class RiverPubSubTest
         var enumerator = enumerable.GetAsyncEnumerator();
         var notifyingEnumerator = new NotifyingAsyncEnumerator<string>(enumerator);
 
-        var river = new River<string>(notifyingEnumerator);
+        var river = new ListenableAsyncEnumerable<string>(notifyingEnumerator);
         var riverEnumerator = river.GetAsyncEnumerator();
 
         Assert.That(riverEnumerator, Is.SameAs(notifyingEnumerator));
