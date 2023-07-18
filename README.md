@@ -34,6 +34,13 @@ subscription.Cancel();
 Calling `Listen` will _not_ enumerate the enumerable.
 The callbacks passed to the `Listen` method only get invoked once the enumerable actually gets enumerated.
 
+# Why 'River'?
+
+"river" and "stream" are similar in their meaning, that's why.
+
+I would have liked to reuse the naming used by Dart for this library, but .NET already provides a `Stream`, that is
+exclusive for IO operations and memory management.
+
 # Contributions
 
 Contributions are welcome. Open an issue or a PR if you want.
