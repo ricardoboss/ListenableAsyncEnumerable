@@ -12,11 +12,10 @@
 It adds functionality to `IAsyncEnumerable` instances to be able to listen to the data emitted by them.</Description>
         <Copyright>2023 Ricardo Boss</Copyright>
         <PackageProjectUrl>https://github.com/ricardoboss/ListenableAsyncEnumerable</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/ricardoboss/ListenableAsyncEnumerable/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/ricardoboss/ListenableAsyncEnumerable</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>IAsyncEnumerable, Async, Enumerable, Listen</PackageTags>
         <PackageReleaseNotes>Initial release</PackageReleaseNotes>
     </PropertyGroup>
-
 </Project>
