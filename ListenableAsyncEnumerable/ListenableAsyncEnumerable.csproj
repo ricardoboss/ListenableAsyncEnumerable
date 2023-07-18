@@ -17,5 +17,10 @@ It adds functionality to `IAsyncEnumerable` instances to be able to listen to th
         <RepositoryType>git</RepositoryType>
         <PackageTags>IAsyncEnumerable, Async, Enumerable, Listen</PackageTags>
         <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="/" />
+    </ItemGroup>
 </Project>
